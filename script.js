@@ -1,6 +1,19 @@
 const kirin = document.querySelector('#kirin');
 
+//監視対象が範囲内に現れたら実行
+const showKirin = (entries) => {
+    const keyframes = {
+        opacity: [0, 1],
+        translate: ['200px 200px', 0]
+    };
+    entries[0].target.animate(keyframes, 600);
+};
 
+//監視ロボットの設定
+const kirinObserver = new IntersectionObserver(showKirin);
+
+// #kirinを監視するように指示する
+kirinObserver.observe(document.querySelector('#kirin'));
 
 //準備完了
 console.log('-STANDBY-');
